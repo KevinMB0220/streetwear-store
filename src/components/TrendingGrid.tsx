@@ -174,7 +174,7 @@ const TrendingGrid = () => {
                 transition: 'var(--transition)'
               }}>
                 {/* Lookbook serial code label */}
-                <div style={{
+                <div className="lookbook-badge" style={{
                   position: 'absolute',
                   top: '12px',
                   right: '12px',
@@ -292,7 +292,7 @@ const TrendingGrid = () => {
               
               <div style={{ padding: '0 5px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-                  <span style={{ 
+                  <span className="product-category" style={{ 
                     fontSize: '0.75rem', 
                     color: 'var(--accent-color)', 
                     textTransform: 'uppercase', 
@@ -300,20 +300,23 @@ const TrendingGrid = () => {
                     fontWeight: 600,
                     fontFamily: 'monospace'
                   }}>{prod.category}</span>
-                  <span style={{ 
+                  <span className="product-size" style={{ 
                     fontSize: '0.75rem', 
                     backgroundColor: 'rgba(255,255,255,0.06)', 
                     color: 'var(--text-secondary)', 
                     padding: '2px 6px',
                     borderRadius: '2px',
                     fontWeight: 600
-                  }}>TALLA {prod.desc.split('•')[0].replace('Talla', '').trim()}</span>
+                  }}>
+                    <span className="desktop-size-label">TALLA </span>
+                    {prod.desc.split('•')[0].replace('Talla', '').trim()}
+                  </span>
                 </div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.4rem', color: '#fff', letterSpacing: '0.5px' }}>{prod.name}</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '0.8rem', lineHeight: '1.4' }}>
                   {prod.desc.includes('•') ? prod.desc.split('•').slice(1).join('•').trim() : prod.desc}
                 </p>
-                <div style={{ 
+                <div className="product-price" style={{ 
                   fontSize: '1.35rem', 
                   fontFamily: 'var(--font-heading)', 
                   fontWeight: 700, 
@@ -396,8 +399,22 @@ const TrendingGrid = () => {
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
-          .product-card div {
-            font-size: 0.9rem !important;
+          .product-price {
+            font-size: 1.05rem !important;
+          }
+          .lookbook-badge {
+            display: none !important;
+          }
+          .desktop-size-label {
+            display: none !important;
+          }
+          .product-size {
+            font-size: 0.7rem !important;
+            padding: 2px 4px !important;
+          }
+          .product-category {
+            font-size: 0.7rem !important;
+            letter-spacing: 0.5px !important;
           }
           .add-to-cart-overlay {
             bottom: 0 !important;
