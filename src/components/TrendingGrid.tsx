@@ -4,31 +4,31 @@ import { ShoppingCart } from 'lucide-react';
 const products = [
   {
     id: 1,
-    name: "Hoodie 'Midnight'",
-    desc: "Algodón pesado, corte oversize.",
-    price: "$65.00",
-    image: "/apparel_cat_generated.png"
+    name: "Camiseta Vintage 'Adventure'",
+    desc: "Algodón lavado, desgaste natural, año 1994.",
+    price: "$35.00",
+    image: "/vintage_tee.png"
   },
   {
     id: 2,
-    name: "Chaqueta Bomber 'Nite'",
-    desc: "Aislamiento térmico, corte urbano.",
-    price: "$110.00",
-    image: "/bomber_cat_generated.png"
+    name: "Chaqueta Racing Vintage",
+    desc: "Chaqueta tipo Nascar con parches bordados retro.",
+    price: "$85.00",
+    image: "/racing_jacket.png"
   },
   {
     id: 3,
-    name: "Pantalón Cargo Táctico",
-    desc: "Múltiples bolsillos, ajuste técnico.",
-    price: "$55.00",
-    image: "/product_cargo_generated.png"
+    name: "Jersey Retro 'Holsten'",
+    desc: "Jersey de fútbol clásico de los 90s, cuello polo.",
+    price: "$50.00",
+    image: "/retro_jersey.png"
   },
   {
     id: 4,
-    name: "Tech Vest 'Urban'",
-    desc: "Chaleco utilitario, repelente al agua.",
-    price: "$85.00",
-    image: "/accessories_cat_generated.png"
+    name: "Pantalón Cargo Carhartt",
+    desc: "Lona gruesa desgastada, corte baggy clásico.",
+    price: "$60.00",
+    image: "/cargo_pants.png"
   }
 ];
 

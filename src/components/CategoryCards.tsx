@@ -4,22 +4,22 @@ import { ArrowRight, Flame, Shield, Crosshair } from 'lucide-react';
 const categories = [
   {
     id: 1,
-    title: 'OUTERWEAR & JACKETS',
-    image: '/apparel_cat_generated.png', // Fallback
+    title: 'RETRO JACKETS',
+    image: '/racing_jacket.png',
     span: 1,
     icon: <Flame size={24} />
   },
   {
     id: 2,
-    title: 'APPAREL & OVERSIZE',
-    image: '/bomber_cat_generated.png',
+    title: 'VINTAGE TEES & JERSEYS',
+    image: '/vintage_tee.png',
     span: 1,
     icon: <Crosshair size={24} />
   },
   {
     id: 3,
-    title: 'ACCESORIOS TÁCTICOS',
-    image: '/accessories_cat_generated.png',
+    title: 'WORKWEAR & CARGOS',
+    image: '/cargo_pants.png',
     span: 1,
     icon: <Shield size={24} />
   }

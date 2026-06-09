@@ -50,8 +50,8 @@ const HeroSection = () => {
           textShadow: '0 4px 20px rgba(0,0,0,0.5)',
           letterSpacing: '4px'
         }}>
-          CONSIGUE EL HYPE.<br/>
-          DROPS EXCLUSIVOS Y <span className="text-accent" style={{ textShadow: '0 0 25px rgba(212,255,0,0.6)' }}>REVENTA</span>.
+          8STREET CLUB.<br/>
+          VINTAGE & <span className="text-accent" style={{ textShadow: '0 0 25px rgba(212,255,0,0.6)' }}>THRIFT STORE</span>.
         </h1>
         <p style={{
           fontSize: '1.2rem',
@@ -65,7 +65,7 @@ const HeroSection = () => {
           backdropFilter: 'blur(5px)',
           border: '1px solid rgba(255,255,255,0.05)'
         }}>
-          Curaduría selecta de las marcas más influyentes y los lanzamientos más buscados de la moda urbana. 100% verificado y listo para las calles.
+          Curaduría exclusiva de prendas de segunda mano, camisetas retro y chaquetas de colección en Costa Rica. Viste con piezas únicas cargadas de historia.
         </p>
         
         <button className="btn-primary" style={{
@@ -73,7 +73,7 @@ const HeroSection = () => {
           padding: '15px 40px',
           letterSpacing: '2px'
         }}>
-          [ COMPRAR HYPE ]
+          [ VER DROPS VINTAGE ]
         </button>
       </div>
     </section>

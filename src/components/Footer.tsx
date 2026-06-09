@@ -12,12 +12,19 @@ const Footer = () => {
         }}>
           
           <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', letterSpacing: '2px' }}>URBAN <span className="text-accent">HYPE</span></h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="14" fill="#050505" stroke="var(--accent-color)" strokeWidth="2.5" />
+                <circle cx="16" cy="16" r="6.5" fill="var(--accent-color)" />
+                <text x="16" y="20.5" fontFamily="var(--font-heading)" fontSize="12" fontWeight="900" fill="#000" textAnchor="middle">8</text>
+              </svg>
+              <h3 style={{ fontSize: '1.5rem', margin: 0, letterSpacing: '2px' }}>8STREET <span className="text-accent">CLUB</span></h3>
+            </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-              Tu destino definitivo para drops limitados, piezas de colección y reventa de streetwear 100% verificado.
+              Tu thrift store de confianza en Costa Rica. Selección exclusiva de prendas vintage, retro tees, jerseys y ropa urbana curada.
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="#" style={{ color: 'var(--text-secondary)', transition: 'var(--transition)' }} className="social-icon">IG</a>
+              <a href="https://www.instagram.com/8streetclub___/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', transition: 'var(--transition)' }} className="social-icon">IG</a>
               <a href="#" style={{ color: 'var(--text-secondary)', transition: 'var(--transition)' }} className="social-icon">X</a>
               <a href="#" style={{ color: 'var(--text-secondary)', transition: 'var(--transition)' }} className="social-icon">TK</a>
             </div>
@@ -78,7 +85,7 @@ const Footer = () => {
           color: 'var(--text-secondary)',
           fontSize: '0.8rem'
         }}>
-          <p>&copy; 2026 URBAN HYPE. TODOS LOS DERECHOS RESERVADOS.</p>
+          <p>&copy; 2026 8STREET CLUB. TODOS LOS DERECHOS RESERVADOS.</p>
           <div style={{ display: 'flex', gap: '10px' }}>
             <span>VISA</span>
             <span>MASTERCARD</span>

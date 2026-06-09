@@ -36,18 +36,23 @@ const Navbar = () => {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         
         {/* Logo */}
-        <div style={{ flex: 1 }}>
-          <a href="#" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontWeight: 700, letterSpacing: '2px' }}>
-            URBAN <span className="text-accent">HYPE</span>
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <svg width="34" height="34" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 6px var(--accent-glow))' }}>
+              <circle cx="16" cy="16" r="14" fill="#050505" stroke="var(--accent-color)" strokeWidth="2.5" />
+              <circle cx="16" cy="16" r="6.5" fill="var(--accent-color)" />
+              <text x="16" y="20.5" fontFamily="var(--font-heading)" fontSize="12" fontWeight="900" fill="#000" textAnchor="middle">8</text>
+            </svg>
+            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#fff' }}>
+              8STREET<span className="text-accent">CLUB</span>
+            </span>
           </a>
         </div>
 
         {/* Desktop Nav */}
         <nav style={{ display: 'flex', gap: '2.5rem' }} className="desktop-nav">
-          <a href="#drops" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>LANZAMIENTOS</a>
-          <a href="#outerwear" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>OUTERWEAR</a>
-          <a href="#apparel" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>APPAREL</a>
-          <a href="#accessories" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>ACCESORIOS</a>
+          <a href="#trending" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>LANZAMIENTOS</a>
+          <a href="#categories" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>COLECCIONES</a>
           <a href="#vault" className="nav-link text-accent" style={{ fontWeight: 600, transition: 'var(--transition)' }}>LA BÓVEDA</a>
         </nav>
 
@@ -98,10 +103,8 @@ const Navbar = () => {
           borderBottom: '1px solid rgba(212, 255, 0, 0.15)',
           animation: 'slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
         }}>
-          <a href="#drops" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LANZAMIENTOS</a>
-          <a href="#outerwear" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>OUTERWEAR</a>
-          <a href="#apparel" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>APPAREL</a>
-          <a href="#accessories" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>ACCESORIOS</a>
+          <a href="#trending" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LANZAMIENTOS</a>
+          <a href="#categories" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>COLECCIONES</a>
           <a href="#vault" className="nav-link text-accent" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LA BÓVEDA</a>
         </div>
       )}
