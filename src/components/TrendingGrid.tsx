@@ -115,6 +115,7 @@ const products = [
 
 const TrendingGrid = () => {
   const [activeCategory, setActiveCategory] = useState("todos");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const filteredProducts = activeCategory === "todos" 
     ? products 
@@ -240,9 +241,11 @@ const TrendingGrid = () => {
                     objectFit: 'cover',
                     transition: 'transform 0.5s ease',
                     filter: prod.soldOut ? 'grayscale(50%) contrast(90%)' : 'contrast(102%)',
-                    opacity: prod.soldOut ? 0.65 : 1
+                    opacity: prod.soldOut ? 0.65 : 1,
+                    cursor: 'zoom-in'
                   }}
                   className="product-img"
+                  onClick={() => setSelectedImage(prod.image)}
                 />
                 
                 {/* Hover Add to Cart Button */}
@@ -264,9 +267,25 @@ const TrendingGrid = () => {
                       AGOTADO
                     </button>
                   ) : (
-                    <button className="btn-primary" style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '10px', fontSize: '0.85rem' }}>
+                    <a 
+                      href="https://chat.whatsapp.com/HhsilmLjZcbBmQSe3uznOZ" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn-primary" 
+                      style={{ 
+                        width: '90%', 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        gap: '8px', 
+                        padding: '10px', 
+                        fontSize: '0.85rem',
+                        textDecoration: 'none',
+                        textAlign: 'center'
+                      }}
+                    >
                       <ShoppingCart size={16} /> PEDIR POR DM
-                    </button>
+                    </a>
                   )}
                 </div>
               </div>
@@ -392,7 +411,70 @@ const TrendingGrid = () => {
             font-size: 0.7rem !important;
           }
         }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+          from { transform: scale(0.95); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
       `}</style>
+
+      {/* Lightbox zoom modal */}
+      {selectedImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100%', height: '100vh',
+            backgroundColor: 'rgba(5, 5, 5, 0.95)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 2000,
+            cursor: 'zoom-out',
+            animation: 'fadeIn 0.25s ease'
+          }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              color: 'white',
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              zIndex: 2001,
+              transition: 'var(--transition)'
+            }}
+            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+          >
+            &times;
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="Zoomed product view" 
+            style={{
+              maxWidth: '92%',
+              maxHeight: '88vh',
+              objectFit: 'contain',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9)',
+              animation: 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 };
