@@ -129,7 +129,7 @@ const TrendingGrid = () => {
         </div>
 
         {/* Category Filter Menu */}
-        <div style={{
+        <div className="category-filter-container" style={{
           display: 'flex',
           gap: '1rem',
           flexWrap: 'wrap',
@@ -247,47 +247,6 @@ const TrendingGrid = () => {
                   className="product-img"
                   onClick={() => setSelectedImage(prod.image)}
                 />
-                
-                {/* Hover Add to Cart Button */}
-                <div className="add-to-cart-overlay" style={{
-                  position: 'absolute',
-                  bottom: prod.soldOut ? '0' : '-60px',
-                  left: 0,
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  padding: '12px',
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)',
-                  transition: 'bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease',
-                  opacity: prod.soldOut ? 1 : undefined,
-                  zIndex: 4
-                }}>
-                  {prod.soldOut ? (
-                    <button className="btn-outline" style={{ width: '90%', padding: '10px', borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)', cursor: 'not-allowed', fontSize: '0.8rem' }} disabled>
-                      AGOTADO
-                    </button>
-                  ) : (
-                    <a 
-                      href="https://chat.whatsapp.com/HhsilmLjZcbBmQSe3uznOZ" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-primary" 
-                      style={{ 
-                        width: '90%', 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center', 
-                        gap: '8px', 
-                        padding: '10px', 
-                        fontSize: '0.85rem',
-                        textDecoration: 'none',
-                        textAlign: 'center'
-                      }}
-                    >
-                      <ShoppingCart size={16} /> PEDIR POR DM
-                    </a>
-                  )}
-                </div>
               </div>
               
               <div style={{ padding: '0 5px' }}>
@@ -324,6 +283,21 @@ const TrendingGrid = () => {
                 }}>
                   {prod.price}
                 </div>
+
+                {prod.soldOut ? (
+                  <button className="btn-agotado" disabled>
+                    AGOTADO
+                  </button>
+                ) : (
+                  <a 
+                    href="https://chat.whatsapp.com/HhsilmLjZcbBmQSe3uznOZ" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-pedir"
+                  >
+                    <ShoppingCart size={14} /> PEDIR POR DM
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -337,6 +311,9 @@ const TrendingGrid = () => {
           background-color: rgba(20, 20, 20, 0.4);
           border: 1px solid rgba(255, 255, 255, 0.02);
           transition: var(--transition);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
         .product-card:hover {
           background-color: rgba(255, 255, 255, 0.04);
@@ -363,15 +340,72 @@ const TrendingGrid = () => {
         .product-card:hover .product-img {
           transform: scale(1.06);
         }
-        .product-card:hover .add-to-cart-overlay {
-          bottom: 0;
-          opacity: 1;
+        .btn-pedir {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          padding: 10px 20px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          background-color: transparent;
+          border: 1px solid var(--accent-color);
+          color: var(--accent-color);
+          border-radius: 4px;
+          transition: var(--transition);
+          margin-top: 1rem;
+          text-decoration: none;
+          text-align: center;
         }
-        .add-to-cart-overlay {
-          opacity: 0;
+        .btn-pedir:hover {
+          background-color: var(--accent-color);
+          color: #000;
+          box-shadow: 0 0 12px var(--accent-glow);
+        }
+        .btn-agotado {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: 10px 20px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          background-color: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.3);
+          border-radius: 4px;
+          margin-top: 1rem;
+          cursor: not-allowed;
+          text-align: center;
         }
 
         @media (max-width: 500px) {
+          .category-filter-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            justify-content: flex-start !important;
+            padding: 5px 24px 15px 24px !important;
+            gap: 0.8rem !important;
+            margin-bottom: 2rem !important;
+            -webkit-overflow-scrolling: touch;
+            width: calc(100% + 48px);
+            margin-left: -24px;
+            scrollbar-width: none;
+          }
+          .category-filter-container::-webkit-scrollbar {
+            display: none;
+          }
+          .category-filter-container button {
+            flex-shrink: 0 !important;
+            padding: 8px 18px !important;
+            font-size: 0.8rem !important;
+          }
           .products-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 1.2rem 0.6rem !important;
@@ -416,16 +450,10 @@ const TrendingGrid = () => {
             font-size: 0.7rem !important;
             letter-spacing: 0.5px !important;
           }
-          .add-to-cart-overlay {
-            bottom: 0 !important;
-            opacity: 1 !important;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%) !important;
-            padding: 6px !important;
-          }
-          .add-to-cart-overlay button {
-            width: 100% !important;
-            padding: 6px !important;
-            font-size: 0.7rem !important;
+          .btn-pedir, .btn-agotado {
+            padding: 8px 10px !important;
+            font-size: 0.75rem !important;
+            margin-top: 0.6rem !important;
           }
         }
         @keyframes fadeIn {
