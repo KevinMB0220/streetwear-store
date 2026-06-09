@@ -2,14 +2,7 @@
 
 const HeroSection = () => {
   return (
-    <section style={{
-      position: 'relative',
-      height: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden'
-    }}>
+    <section className="hero-section">
       {/* Background Image / Video overlay */}
       <div style={{
         position: 'absolute',
@@ -63,40 +56,91 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container" style={{ textAlign: 'center', zIndex: 10 }}>
-        <h1 style={{
-          fontSize: 'clamp(3rem, 8vw, 6.5rem)',
-          lineHeight: 1.1,
-          marginBottom: '1.5rem',
-          textShadow: '0 4px 20px rgba(0,0,0,0.5)',
-          letterSpacing: '4px'
-        }}>
+      <div className="container hero-container">
+        <h1 className="hero-title">
           8STREET CLUB.<br/>
           VINTAGE & <span className="text-accent" style={{ textShadow: '0 0 25px rgba(212,255,0,0.6)' }}>THRIFT STORE</span>.
         </h1>
-        <p style={{
-          fontSize: '1.2rem',
-          color: 'var(--text-primary)',
-          maxWidth: '650px',
-          margin: '0 auto 3rem auto',
-          textShadow: '0 2px 10px rgba(0,0,0,0.8)',
-          backgroundColor: 'rgba(0,0,0,0.3)',
-          padding: '15px 25px',
-          borderRadius: '8px',
-          backdropFilter: 'blur(5px)',
-          border: '1px solid rgba(255,255,255,0.05)'
-        }}>
+        <p className="hero-desc">
           Curaduría exclusiva de prendas de segunda mano, camisetas retro y chaquetas de colección en Costa Rica. Viste con piezas únicas cargadas de historia.
         </p>
         
-        <button className="btn-primary" style={{
-          fontSize: '1.3rem',
-          padding: '15px 40px',
-          letterSpacing: '2px'
-        }}>
+        <a href="#trending" className="btn-primary hero-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
           [ VER DROPS VINTAGE ]
-        </button>
+        </a>
       </div>
+
+      <style>{`
+        .hero-section {
+          position: relative;
+          height: 100vh;
+          height: 100dvh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .hero-container {
+          text-align: center;
+          z-index: 10;
+          padding-top: 50px;
+        }
+        .hero-title {
+          font-size: clamp(3rem, 7vw, 6.2rem);
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+          text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+          letter-spacing: 3px;
+        }
+        .hero-desc {
+          font-size: 1.2rem;
+          color: var(--text-primary);
+          max-width: 650px;
+          margin: 0 auto 3rem auto;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+          background-color: rgba(5,5,5,0.45);
+          padding: 15px 25px;
+          border-radius: 8px;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255,255,255,0.06);
+          line-height: 1.5;
+        }
+        .hero-btn {
+          font-size: 1.25rem;
+          padding: 14px 36px;
+          letter-spacing: 2px;
+        }
+
+        @media (max-width: 500px) {
+          .hero-section {
+            height: auto;
+            min-height: 100dvh;
+            padding: 90px 0 40px 0;
+            display: flex;
+            align-items: center;
+          }
+          .hero-container {
+            padding-top: 0;
+          }
+          .hero-title {
+            font-size: 2.1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+          }
+          .hero-desc {
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+          }
+          .hero-btn {
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            letter-spacing: 1px;
+          }
+        }
+      `}</style>
     </section>
   );
 };
