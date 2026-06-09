@@ -44,23 +44,28 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container" style={{ textAlign: 'center', zIndex: 10 }}>
         <h1 style={{
-          fontSize: 'clamp(3rem, 8vw, 6rem)',
+          fontSize: 'clamp(3rem, 8vw, 6.5rem)',
           lineHeight: 1.1,
           marginBottom: '1.5rem',
-          textShadow: '0 4px 20px rgba(0,0,0,0.5)'
+          textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          letterSpacing: '4px'
         }}>
-          REDEFINE LAS REGLAS.<br/>
-          COLECCIÓN URBANA <span className="text-accent">'26</span>.
+          CONSIGUE EL HYPE.<br/>
+          DROPS EXCLUSIVOS Y <span className="text-accent" style={{ textShadow: '0 0 25px rgba(212,255,0,0.6)' }}>REVENTA</span>.
         </h1>
         <p style={{
           fontSize: '1.2rem',
-          color: 'var(--text-secondary)',
-          maxWidth: '600px',
+          color: 'var(--text-primary)',
+          maxWidth: '650px',
           margin: '0 auto 3rem auto',
-          textShadow: '0 2px 10px rgba(0,0,0,0.8)'
+          textShadow: '0 2px 10px rgba(0,0,0,0.8)',
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          padding: '15px 25px',
+          borderRadius: '8px',
+          backdropFilter: 'blur(5px)',
+          border: '1px solid rgba(255,255,255,0.05)'
         }}>
-          Estética cruda, materiales premium y diseños sin concesiones.
-          Explora la nueva temporada y marca la diferencia en las calles.
+          Curaduría selecta de las marcas más influyentes y los lanzamientos más buscados de la moda urbana. 100% verificado y listo para las calles.
         </p>
         
         <button className="btn-primary" style={{
@@ -68,7 +73,7 @@ const HeroSection = () => {
           padding: '15px 40px',
           letterSpacing: '2px'
         }}>
-          [ EXPLORAR EL DROP ]
+          [ COMPRAR HYPE ]
         </button>
       </div>
     </section>

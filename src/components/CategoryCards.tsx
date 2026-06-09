@@ -1,24 +1,27 @@
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Flame, Shield, Crosshair } from 'lucide-react';
 
 const categories = [
   {
     id: 1,
-    title: 'KICKS & SNEAKERS',
-    image: '/sneakers_cat_generated.png', // Fallback to placeholder if missing
-    span: 1
+    title: 'OUTERWEAR & JACKETS',
+    image: '/apparel_cat_generated.png', // Fallback
+    span: 1,
+    icon: <Flame size={24} />
   },
   {
     id: 2,
     title: 'APPAREL & OVERSIZE',
-    image: '/apparel_cat_generated.png',
-    span: 1
+    image: '/bomber_cat_generated.png',
+    span: 1,
+    icon: <Crosshair size={24} />
   },
   {
     id: 3,
     title: 'ACCESORIOS TÁCTICOS',
     image: '/accessories_cat_generated.png',
-    span: 1
+    span: 1,
+    icon: <Shield size={24} />
   }
 ];
 
@@ -28,7 +31,7 @@ const CategoryCards = () => {
       <div className="container">
         <h2 className="section-title">EXPLORA LA <span className="text-accent">COLECCIÓN</span></h2>
         
-        <div style={{
+        <div className="categories-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '2rem',
@@ -61,12 +64,24 @@ const CategoryCards = () => {
 
               <div style={{
                 position: 'absolute',
+                top: '20px',
+                right: '20px',
+                color: 'var(--accent-color)',
+                filter: 'drop-shadow(0 0 8px rgba(212, 255, 0, 0.6))',
+                zIndex: 2
+              }}>
+                {cat.icon}
+              </div>
+
+              <div style={{
+                position: 'absolute',
                 bottom: '30px',
                 left: '30px',
                 right: '30px',
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'flex-end'
+                alignItems: 'flex-end',
+                zIndex: 2
               }}>
                 <h3 style={{ fontSize: '1.8rem', margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
                   {cat.title}
@@ -78,9 +93,10 @@ const CategoryCards = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  transition: 'var(--transition)'
+                  transition: 'var(--transition)',
+                  borderRadius: '50%'
                 }}>
-                  <ArrowRight size={24} />
+                  <ArrowRight size={20} />
                 </div>
               </div>
             </div>
@@ -89,13 +105,43 @@ const CategoryCards = () => {
       </div>
       
       <style>{`
+        .category-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 2px solid transparent;
+          transition: var(--transition);
+          z-index: 3;
+          pointer-events: none;
+        }
+        .category-card:hover::after {
+          border-color: var(--accent-color);
+          box-shadow: inset 0 0 20px var(--accent-glow);
+        }
         .category-card:hover .card-bg {
           transform: scale(1.08);
           opacity: 0.9;
         }
         .category-card:hover .arrow-icon {
-          transform: translateX(5px);
-          box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+          transform: translateX(5px) scale(1.1);
+          box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (max-width: 500px) {
+          .categories-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.2rem !important;
+            margin-top: 1.5rem !important;
+          }
+          .category-card {
+            height: 250px !important;
+          }
+          .category-card h3 {
+            font-size: 1.3rem !important;
+          }
+          .category-card .arrow-icon {
+            padding: 8px !important;
+          }
         }
       `}</style>
     </section>

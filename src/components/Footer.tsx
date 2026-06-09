@@ -12,9 +12,9 @@ const Footer = () => {
         }}>
           
           <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', letterSpacing: '2px' }}>URBAN <span className="text-accent">'26</span></h3>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', letterSpacing: '2px' }}>URBAN <span className="text-accent">HYPE</span></h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-              Redefiniendo el streetwear con materiales premium y cortes experimentales.
+              Tu destino definitivo para drops limitados, piezas de colección y reventa de streetwear 100% verificado.
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="#" style={{ color: 'var(--text-secondary)', transition: 'var(--transition)' }} className="social-icon">IG</a>
@@ -78,7 +78,7 @@ const Footer = () => {
           color: 'var(--text-secondary)',
           fontSize: '0.8rem'
         }}>
-          <p>&copy; 2026 URBAN STUDIO. TODOS LOS DERECHOS RESERVADOS.</p>
+          <p>&copy; 2026 URBAN HYPE. TODOS LOS DERECHOS RESERVADOS.</p>
           <div style={{ display: 'flex', gap: '10px' }}>
             <span>VISA</span>
             <span>MASTERCARD</span>

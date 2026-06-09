@@ -38,16 +38,16 @@ const Navbar = () => {
         {/* Logo */}
         <div style={{ flex: 1 }}>
           <a href="#" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontWeight: 700, letterSpacing: '2px' }}>
-            URBAN <span className="text-accent">'26</span>
+            URBAN <span className="text-accent">HYPE</span>
           </a>
         </div>
 
         {/* Desktop Nav */}
-        <nav style={{ display: 'flex', gap: '2rem' }} className="desktop-nav">
-          <a href="#drops" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)' }}>LANZAMIENTOS</a>
-          <a href="#kicks" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)' }}>SNEAKERS</a>
-          <a href="#apparel" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)' }}>APPAREL</a>
-          <a href="#accessories" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)' }}>ACCESORIOS</a>
+        <nav style={{ display: 'flex', gap: '2.5rem' }} className="desktop-nav">
+          <a href="#drops" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>LANZAMIENTOS</a>
+          <a href="#outerwear" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>OUTERWEAR</a>
+          <a href="#apparel" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>APPAREL</a>
+          <a href="#accessories" className="nav-link" style={{ fontWeight: 600, transition: 'var(--transition)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>ACCESORIOS</a>
           <a href="#vault" className="nav-link text-accent" style={{ fontWeight: 600, transition: 'var(--transition)' }}>LA BÓVEDA</a>
         </nav>
 
@@ -79,17 +79,67 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu Drawer */}
+      {mobileMenuOpen && (
+        <div style={{
+          position: 'fixed',
+          top: '70px',
+          left: 0,
+          width: '100%',
+          height: 'calc(100vh - 70px)',
+          backgroundColor: 'rgba(5, 5, 5, 0.98)',
+          backdropFilter: 'blur(15px)',
+          zIndex: 999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '2.5rem',
+          borderBottom: '1px solid rgba(212, 255, 0, 0.15)',
+          animation: 'slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+        }}>
+          <a href="#drops" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LANZAMIENTOS</a>
+          <a href="#outerwear" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>OUTERWEAR</a>
+          <a href="#apparel" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>APPAREL</a>
+          <a href="#accessories" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>ACCESORIOS</a>
+          <a href="#vault" className="nav-link text-accent" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LA BÓVEDA</a>
+        </div>
+      )}
+
       <style>{`
+        .nav-link {
+          position: relative;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: var(--accent-color);
+          transition: var(--transition);
+        }
         .nav-link:hover {
           color: var(--accent-color);
+          text-shadow: 0 0 10px var(--accent-glow);
+        }
+        .nav-link:hover::after {
+          width: 100%;
+          box-shadow: 0 0 8px var(--accent-glow);
         }
         .icon-btn:hover {
           color: var(--accent-color) !important;
-          transform: translateY(-2px);
+          transform: translateY(-2px) scale(1.1);
+          filter: drop-shadow(0 0 8px var(--accent-glow));
         }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
+        }
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </header>
