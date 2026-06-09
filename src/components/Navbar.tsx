@@ -36,14 +36,14 @@ const Navbar = () => {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         
         {/* Logo */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <svg width="34" height="34" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 6px var(--accent-glow))' }}>
+        <div className="logo-container" style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+          <a href="#" className="logo-link" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <svg className="logo-svg" width="34" height="34" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 6px var(--accent-glow))' }}>
               <circle cx="16" cy="16" r="14" fill="#050505" stroke="var(--accent-color)" strokeWidth="2.5" />
               <circle cx="16" cy="16" r="6.5" fill="var(--accent-color)" />
               <text x="16" y="20.5" fontFamily="var(--font-heading)" fontSize="12" fontWeight="900" fill="#000" textAnchor="middle">8</text>
             </svg>
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#fff' }}>
+            <span className="logo-text" style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#fff' }}>
               8STREET<span className="text-accent">CLUB</span>
             </span>
           </a>
@@ -57,7 +57,7 @@ const Navbar = () => {
         </nav>
 
         {/* Icons */}
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center' }}>
+        <div className="icons-container" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center' }}>
           <button style={{ background: 'transparent', color: 'var(--text-primary)', transition: 'var(--transition)' }} className="icon-btn">
             <Search size={22} />
           </button>
@@ -74,27 +74,28 @@ const Navbar = () => {
             }}>2</span>
           </button>
           
+          {/* Mobile Menu Button (Hamburger) placed back on the far right */}
           <button 
             className="mobile-menu-btn" 
-            style={{ display: 'none', background: 'transparent', color: 'var(--text-primary)' }}
+            style={{ display: 'none', background: 'transparent', color: 'var(--text-primary)', border: 'none', padding: 0 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            <Menu size={26} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Fullscreen Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div style={{
           position: 'fixed',
-          top: '70px',
+          top: 0,
           left: 0,
           width: '100%',
-          height: 'calc(100vh - 70px)',
-          backgroundColor: 'rgba(5, 5, 5, 0.98)',
-          backdropFilter: 'blur(15px)',
-          zIndex: 999,
+          height: '100vh',
+          backgroundColor: 'rgba(5, 5, 5, 0.99)',
+          backdropFilter: 'blur(20px)',
+          zIndex: 1100,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -103,9 +104,26 @@ const Navbar = () => {
           borderBottom: '1px solid rgba(212, 255, 0, 0.15)',
           animation: 'slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
         }}>
-          <a href="#trending" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LANZAMIENTOS</a>
-          <a href="#categories" className="nav-link" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>COLECCIONES</a>
-          <a href="#vault" className="nav-link text-accent" style={{ fontSize: '1.5rem', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>LA BÓVEDA</a>
+          {/* Dedicated Close Button */}
+          <button 
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '24px',
+              background: 'transparent',
+              color: 'var(--text-primary)',
+              border: 'none',
+              cursor: 'pointer',
+              zIndex: 1200
+            }}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <X size={32} />
+          </button>
+
+          <a href="#trending" className="nav-link" style={{ fontSize: '1.8rem', fontWeight: 700, letterSpacing: '1px' }} onClick={() => setMobileMenuOpen(false)}>LANZAMIENTOS</a>
+          <a href="#categories" className="nav-link" style={{ fontSize: '1.8rem', fontWeight: 700, letterSpacing: '1px' }} onClick={() => setMobileMenuOpen(false)}>COLECCIONES</a>
+          <a href="#vault" className="nav-link text-accent" style={{ fontSize: '1.8rem', fontWeight: 700, letterSpacing: '1px' }} onClick={() => setMobileMenuOpen(false)}>LA BÓVEDA</a>
         </div>
       )}
 
@@ -139,6 +157,30 @@ const Navbar = () => {
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: block !important; }
+        }
+        @media (max-width: 500px) {
+          .logo-svg {
+            width: 25px !important;
+            height: 25px !important;
+          }
+          .logo-text {
+            font-size: 1.15rem !important;
+            letter-spacing: 1px !important;
+          }
+          .logo-link {
+            gap: 6px !important;
+          }
+          .icons-container {
+            gap: 0.8rem !important;
+          }
+          .icon-btn svg {
+            width: 19px !important;
+            height: 19px !important;
+          }
+          .mobile-menu-btn svg {
+            width: 22px !important;
+            height: 22px !important;
+          }
         }
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-20px); }
