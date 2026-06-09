@@ -1,5 +1,5 @@
 
-import { ShieldCheck, Cpu } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 const VaultSection = () => {
   return (
