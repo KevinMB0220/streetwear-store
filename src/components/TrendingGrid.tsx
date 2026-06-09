@@ -1,44 +1,129 @@
 
+import { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
 
 const products = [
   {
     id: 1,
-    name: "Camiseta Vintage 'Adventure'",
-    desc: "Algodón lavado, desgaste natural, año 1994.",
-    price: "$35.00",
-    image: "/vintage_tee.png"
+    name: "Polo Ralph Lauren Vintage",
+    category: "camisetas",
+    desc: "Talla M • Estado Nueva. Color azul clásico.",
+    price: "₡30.000",
+    image: "/insta_item_1.jpg",
+    soldOut: false
   },
   {
     id: 2,
-    name: "Chaqueta Racing Vintage",
-    desc: "Chaqueta tipo Nascar con parches bordados retro.",
-    price: "$85.00",
-    image: "/racing_jacket.png"
+    name: "Polo Ralph Lauren Retro",
+    category: "camisetas",
+    desc: "Talla M • Estado Excelente. Clásico bordado.",
+    price: "₡15.000",
+    image: "/insta_item_2.jpg",
+    soldOut: true
   },
   {
     id: 3,
-    name: "Jersey Retro 'Holsten'",
-    desc: "Jersey de fútbol clásico de los 90s, cuello polo.",
-    price: "$50.00",
-    image: "/retro_jersey.png"
+    name: "Polo Ralph Lauren Sport",
+    category: "camisetas",
+    desc: "Talla L • Estado Excelente. Blanco con azul.",
+    price: "₡15.000",
+    image: "/insta_item_3.jpg",
+    soldOut: false
   },
   {
     id: 4,
-    name: "Pantalón Cargo Carhartt",
-    desc: "Lona gruesa desgastada, corte baggy clásico.",
-    price: "$60.00",
-    image: "/cargo_pants.png"
+    name: "Polo Ralph Lauren Striped",
+    category: "camisetas",
+    desc: "Talla M • Estado Excelente. Diseño de rayas.",
+    price: "₡15.000",
+    image: "/insta_item_4.jpg",
+    soldOut: true
+  },
+  {
+    id: 5,
+    name: "Polo Ralph Lauren Red Logo",
+    category: "camisetas",
+    desc: "Talla M • Estado Excelente. Bordado rojo.",
+    price: "₡15.000",
+    image: "/insta_item_5.jpg",
+    soldOut: true
+  },
+  {
+    id: 6,
+    name: "Campera Columbia Vintage",
+    category: "abrigos",
+    desc: "Talla M • Estado Excelente. Cortavientos retro.",
+    price: "₡15.000",
+    image: "/insta_item_6.jpg",
+    soldOut: true
+  },
+  {
+    id: 7,
+    name: "Cortaviento Nike Retro",
+    category: "abrigos",
+    desc: "Talla L • Estado Bueno. Cortavientos ligero.",
+    price: "₡10.000",
+    image: "/insta_item_7_raw.jpg",
+    soldOut: false
+  },
+  {
+    id: 8,
+    name: "Buzos Baggy Streetwear",
+    category: "pantalones",
+    desc: "Talla M • Estado Excelente. Buzos anchos.",
+    price: "₡15.000",
+    image: "/insta_item_9_raw.jpg",
+    soldOut: false
+  },
+  {
+    id: 9,
+    name: "Fleece Columbia Retro",
+    category: "abrigos",
+    desc: "Talla L (Queda L) • Estado Excelente.",
+    price: "₡8.000",
+    image: "/insta_item_12_raw.jpg",
+    soldOut: false
   }
 ];
 
 const TrendingGrid = () => {
+  const [activeCategory, setActiveCategory] = useState("todos");
+
+  const filteredProducts = activeCategory === "todos" 
+    ? products 
+    : products.filter(p => p.category === activeCategory);
+
   return (
     <section id="trending" style={{ padding: '6rem 0', backgroundColor: '#111111' }}>
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
-          <h2 className="section-title" style={{ margin: 0, textAlign: 'left' }}>TRENDING <span className="text-accent">NOW</span></h2>
-          <a href="#" className="text-accent" style={{ fontFamily: 'var(--font-heading)', letterSpacing: '1px', fontSize: '1.1rem', textDecoration: 'underline' }}>VER TODO</a>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '3rem' }}>
+          <h2 className="section-title" style={{ margin: 0, textAlign: 'center' }}>PRENDAS <span className="text-accent">DISPONIBLES</span></h2>
+        </div>
+
+        {/* Category Filter Menu */}
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          flexWrap: 'wrap',
+          marginBottom: '3.5rem',
+          justifyContent: 'center'
+        }}>
+          {['todos', 'camisetas', 'abrigos', 'pantalones'].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={activeCategory === cat ? 'btn-primary' : 'btn-outline'}
+              style={{
+                padding: '10px 24px',
+                fontSize: '0.9rem',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                borderRadius: '4px'
+              }}
+            >
+              {cat === 'todos' ? 'Ver Todo' : cat}
+            </button>
+          ))}
         </div>
         
         <div className="products-grid" style={{
@@ -46,7 +131,7 @@ const TrendingGrid = () => {
           gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
           gap: '2.5rem'
         }}>
-          {products.map((prod) => (
+          {filteredProducts.map((prod) => (
             <div key={prod.id} className="product-card">
               <div className="img-container" style={{
                 backgroundColor: 'var(--surface-color)',
@@ -60,6 +145,25 @@ const TrendingGrid = () => {
                 border: '1px solid rgba(255, 255, 255, 0.05)',
                 transition: 'var(--transition)'
               }}>
+                {prod.soldOut && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '12px',
+                    backgroundColor: '#ff3b30',
+                    color: '#fff',
+                    padding: '4px 10px',
+                    fontSize: '0.75rem',
+                    fontWeight: 'bold',
+                    borderRadius: '3px',
+                    zIndex: 2,
+                    textTransform: 'uppercase',
+                    boxShadow: '0 2px 8px rgba(255, 59, 48, 0.4)'
+                  }}>
+                    VENDIDO
+                  </div>
+                )}
+                
                 <img 
                   src={prod.image} 
                   alt={prod.name} 
@@ -67,7 +171,9 @@ const TrendingGrid = () => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    transition: 'transform 0.4s ease'
+                    transition: 'transform 0.4s ease',
+                    filter: prod.soldOut ? 'grayscale(40%)' : 'none',
+                    opacity: prod.soldOut ? 0.75 : 1
                   }}
                   className="product-img"
                 />
@@ -75,25 +181,32 @@ const TrendingGrid = () => {
                 {/* Hover Add to Cart Button */}
                 <div className="add-to-cart-overlay" style={{
                   position: 'absolute',
-                  bottom: '-50px',
+                  bottom: prod.soldOut ? '0' : '-50px',
                   left: 0,
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'center',
                   padding: '10px',
                   background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
-                  transition: 'bottom 0.3s ease'
+                  transition: 'bottom 0.3s ease',
+                  opacity: prod.soldOut ? 1 : undefined
                 }}>
-                  <button className="btn-primary" style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', padding: '10px' }}>
-                    <ShoppingCart size={18} /> AÑADIR
-                  </button>
+                  {prod.soldOut ? (
+                    <button className="btn-outline" style={{ width: '90%', padding: '10px', borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.4)', cursor: 'not-allowed' }} disabled>
+                      AGOTADO
+                    </button>
+                  ) : (
+                    <button className="btn-primary" style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', padding: '10px' }}>
+                      <ShoppingCart size={18} /> PEDIR POR DM
+                    </button>
+                  )}
                 </div>
               </div>
               
               <div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>{prod.name}</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.8rem' }}>{prod.desc}</p>
-                <div style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontWeight: 700, color: 'var(--accent-color)' }}>
+                <div style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontWeight: 700, color: prod.soldOut ? 'var(--text-secondary)' : 'var(--accent-color)' }}>
                   {prod.price}
                 </div>
               </div>
@@ -116,6 +229,19 @@ const TrendingGrid = () => {
         .img-container {
           border-radius: 4px;
         }
+        /* Aesthetic dark vignette overlay to hide the floor */
+        .img-container::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
+          pointer-events: none;
+          transition: var(--transition);
+          z-index: 1;
+        }
+        .img-container:hover::after {
+          box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+        }
         .product-card:hover .product-img {
           transform: scale(1.08);
         }
@@ -125,6 +251,7 @@ const TrendingGrid = () => {
         }
         .add-to-cart-overlay {
           opacity: 0;
+          z-index: 2;
         }
 
         @media (max-width: 500px) {
