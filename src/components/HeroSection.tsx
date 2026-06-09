@@ -18,26 +18,47 @@ const HeroSection = () => {
         width: '100%',
         height: '100%',
         zIndex: -1,
-        backgroundColor: '#0d0d0d'
+        backgroundColor: '#050505'
       }}>
-        {/* Usando la imagen generada, puedes cambiar la ruta según corresponda */}
         <img 
-          src="/hero_bg_generated.png" 
-          alt="Streetwear urban style"
+          src="/hero_bg_premium.png" 
+          alt="Streetwear urban style lookbook"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            opacity: 0.6
+            opacity: 0.45,
+            filter: 'grayscale(15%) contrast(110%)'
           }}
         />
+        {/* Analog scanlines overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0, width: '100%', height: '100%',
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.35) 50%)',
+          backgroundSize: '100% 4px',
+          zIndex: 1,
+          pointerEvents: 'none',
+          opacity: 0.4
+        }}></div>
+        {/* Cyberpunk dot-matrix grid overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0, width: '100%', height: '100%',
+          backgroundImage: 'radial-gradient(rgba(212, 255, 0, 0.12) 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px',
+          zIndex: 1,
+          pointerEvents: 'none',
+          opacity: 0.6
+        }}></div>
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.9) 100%)'
+          background: 'linear-gradient(to bottom, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.95) 100%)',
+          zIndex: 2
         }}></div>
       </div>
 

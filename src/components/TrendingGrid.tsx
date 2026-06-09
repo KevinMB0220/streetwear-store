@@ -7,81 +7,108 @@ const products = [
     id: 1,
     name: "Polo Ralph Lauren Vintage",
     category: "camisetas",
-    desc: "Talla M • Estado Nueva. Color azul clásico.",
+    desc: "Talla M • Disponible en excelente estado",
     price: "₡30.000",
     image: "/insta_item_1.jpg",
     soldOut: false
   },
   {
     id: 2,
-    name: "Polo Ralph Lauren Retro",
+    name: "Polo Ralph Lauren Vintage",
     category: "camisetas",
-    desc: "Talla M • Estado Excelente. Clásico bordado.",
+    desc: "Talla M • Vendido",
     price: "₡15.000",
     image: "/insta_item_2.jpg",
     soldOut: true
   },
   {
     id: 3,
-    name: "Polo Ralph Lauren Sport",
+    name: "Polo Ralph Lauren Vintage",
     category: "camisetas",
-    desc: "Talla L • Estado Excelente. Blanco con azul.",
+    desc: "Talla L • Disponible en excelente estado",
     price: "₡15.000",
     image: "/insta_item_3.jpg",
     soldOut: false
   },
   {
     id: 4,
-    name: "Polo Ralph Lauren Striped",
+    name: "Polo Ralph Lauren Vintage",
     category: "camisetas",
-    desc: "Talla M • Estado Excelente. Diseño de rayas.",
+    desc: "Talla M • Vendido",
     price: "₡15.000",
     image: "/insta_item_4.jpg",
     soldOut: true
   },
   {
     id: 5,
-    name: "Polo Ralph Lauren Red Logo",
+    name: "Polo Ralph Lauren Vintage",
     category: "camisetas",
-    desc: "Talla M • Estado Excelente. Bordado rojo.",
+    desc: "Talla M • Vendido",
     price: "₡15.000",
     image: "/insta_item_5.jpg",
     soldOut: true
   },
   {
     id: 6,
-    name: "Campera Columbia Vintage",
-    category: "abrigos",
-    desc: "Talla M • Estado Excelente. Cortavientos retro.",
-    price: "₡15.000",
-    image: "/insta_item_6.jpg",
-    soldOut: true
+    "name": "Campera Columbia Vintage",
+    "category": "abrigos",
+    "desc": "Talla M • Vendido",
+    "price": "₡15.000",
+    "image": "/insta_item_6.jpg",
+    "soldOut": true
   },
   {
     id: 7,
     name: "Cortaviento Nike Retro",
     category: "abrigos",
-    desc: "Talla L • Estado Bueno. Cortavientos ligero.",
-    price: "₡10.000",
-    image: "/insta_item_7_raw.jpg",
+    desc: "Talla L • Disponible en excelente estado",
+    "price": "₡10.000",
+    image: "/insta_item_7.jpg",
     soldOut: false
   },
   {
     id: 8,
-    name: "Buzos Baggy Streetwear",
-    category: "pantalones",
-    desc: "Talla M • Estado Excelente. Buzos anchos.",
+    name: "Camiseta Under Armour Sport",
+    category: "camisetas",
+    desc: "Talla M • Vendido",
     price: "₡15.000",
-    image: "/insta_item_9_raw.jpg",
-    soldOut: false
+    image: "/insta_item_8.jpg",
+    soldOut: true
   },
   {
     id: 9,
+    name: "Buzos Baggy Streetwear",
+    category: "pantalones",
+    desc: "Talla M • Gris Disponible • Negro Agotado",
+    price: "₡15.000",
+    image: "/insta_item_9.jpg",
+    soldOut: false
+  },
+  {
+    id: 10,
+    name: "Polo Ralph Lauren Vintage",
+    category: "camisetas",
+    desc: "Talla M • Vendido",
+    price: "₡15.000",
+    image: "/insta_item_10.jpg",
+    soldOut: true
+  },
+  {
+    id: 11,
+    name: "Polo Ralph Lauren Vintage",
+    category: "camisetas",
+    desc: "Talla M • Vendido",
+    price: "₡15.000",
+    image: "/insta_item_11.jpg",
+    soldOut: true
+  },
+  {
+    id: 12,
     name: "Fleece Columbia Retro",
     category: "abrigos",
-    desc: "Talla L (Queda L) • Estado Excelente.",
+    desc: "Talla L • Disponible en excelente estado",
     price: "₡8.000",
-    image: "/insta_item_12_raw.jpg",
+    image: "/insta_item_12.jpg",
     soldOut: false
   }
 ];
@@ -128,39 +155,79 @@ const TrendingGrid = () => {
         
         <div className="products-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
           gap: '2.5rem'
         }}>
           {filteredProducts.map((prod) => (
             <div key={prod.id} className="product-card">
               <div className="img-container" style={{
-                backgroundColor: 'var(--surface-color)',
-                height: '320px',
+                backgroundColor: '#121212', // Dark background to blend natural wood-floor edges
+                height: '340px',
                 position: 'relative',
                 overflow: 'hidden',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: '1.5rem',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                marginBottom: '1.2rem',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 transition: 'var(--transition)'
               }}>
-                {prod.soldOut && (
+                {/* Lookbook serial code label */}
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                  backdropFilter: 'blur(4px)',
+                  color: 'rgba(255, 255, 255, 0.6)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  padding: '3px 8px',
+                  fontSize: '0.65rem',
+                  fontFamily: 'monospace',
+                  letterSpacing: '1px',
+                  fontWeight: 600,
+                  borderRadius: '2px',
+                  zIndex: 3,
+                  pointerEvents: 'none'
+                }}>
+                  8S // C-{(prod.id * 100 + 47).toString(16).toUpperCase()}
+                </div>
+
+                {prod.soldOut ? (
                   <div style={{
                     position: 'absolute',
                     top: '12px',
                     left: '12px',
-                    backgroundColor: '#ff3b30',
+                    backgroundColor: '#e63946',
                     color: '#fff',
                     padding: '4px 10px',
                     fontSize: '0.75rem',
                     fontWeight: 'bold',
-                    borderRadius: '3px',
-                    zIndex: 2,
+                    borderRadius: '2px',
+                    zIndex: 3,
                     textTransform: 'uppercase',
-                    boxShadow: '0 2px 8px rgba(255, 59, 48, 0.4)'
+                    boxShadow: '0 4px 12px rgba(230, 57, 70, 0.4)',
+                    letterSpacing: '1px'
                   }}>
                     VENDIDO
+                  </div>
+                ) : (
+                  <div style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '12px',
+                    backgroundColor: 'var(--accent-color)',
+                    color: '#000',
+                    padding: '4px 10px',
+                    fontSize: '0.75rem',
+                    fontWeight: 'bold',
+                    borderRadius: '2px',
+                    zIndex: 3,
+                    textTransform: 'uppercase',
+                    boxShadow: '0 4px 12px rgba(212, 255, 0, 0.3)',
+                    letterSpacing: '1px'
+                  }}>
+                    DISPONIBLE
                   </div>
                 )}
                 
@@ -171,9 +238,9 @@ const TrendingGrid = () => {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    transition: 'transform 0.4s ease',
-                    filter: prod.soldOut ? 'grayscale(40%)' : 'none',
-                    opacity: prod.soldOut ? 0.75 : 1
+                    transition: 'transform 0.5s ease',
+                    filter: prod.soldOut ? 'grayscale(50%) contrast(90%)' : 'contrast(102%)',
+                    opacity: prod.soldOut ? 0.65 : 1
                   }}
                   className="product-img"
                 />
@@ -181,32 +248,58 @@ const TrendingGrid = () => {
                 {/* Hover Add to Cart Button */}
                 <div className="add-to-cart-overlay" style={{
                   position: 'absolute',
-                  bottom: prod.soldOut ? '0' : '-50px',
+                  bottom: prod.soldOut ? '0' : '-60px',
                   left: 0,
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'center',
-                  padding: '10px',
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
-                  transition: 'bottom 0.3s ease',
-                  opacity: prod.soldOut ? 1 : undefined
+                  padding: '12px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)',
+                  transition: 'bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease',
+                  opacity: prod.soldOut ? 1 : undefined,
+                  zIndex: 4
                 }}>
                   {prod.soldOut ? (
-                    <button className="btn-outline" style={{ width: '90%', padding: '10px', borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.4)', cursor: 'not-allowed' }} disabled>
+                    <button className="btn-outline" style={{ width: '90%', padding: '10px', borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)', cursor: 'not-allowed', fontSize: '0.8rem' }} disabled>
                       AGOTADO
                     </button>
                   ) : (
-                    <button className="btn-primary" style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', padding: '10px' }}>
-                      <ShoppingCart size={18} /> PEDIR POR DM
+                    <button className="btn-primary" style={{ width: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '10px', fontSize: '0.85rem' }}>
+                      <ShoppingCart size={16} /> PEDIR POR DM
                     </button>
                   )}
                 </div>
               </div>
               
-              <div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.3rem' }}>{prod.name}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.8rem' }}>{prod.desc}</p>
-                <div style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontWeight: 700, color: prod.soldOut ? 'var(--text-secondary)' : 'var(--accent-color)' }}>
+              <div style={{ padding: '0 5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+                  <span style={{ 
+                    fontSize: '0.75rem', 
+                    color: 'var(--accent-color)', 
+                    textTransform: 'uppercase', 
+                    letterSpacing: '1px',
+                    fontWeight: 600,
+                    fontFamily: 'monospace'
+                  }}>{prod.category}</span>
+                  <span style={{ 
+                    fontSize: '0.75rem', 
+                    backgroundColor: 'rgba(255,255,255,0.06)', 
+                    color: 'var(--text-secondary)', 
+                    padding: '2px 6px',
+                    borderRadius: '2px',
+                    fontWeight: 600
+                  }}>TALLA {prod.desc.split('•')[0].replace('Talla', '').trim()}</span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.4rem', color: '#fff', letterSpacing: '0.5px' }}>{prod.name}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '0.8rem', lineHeight: '1.4' }}>
+                  {prod.desc.includes('•') ? prod.desc.split('•').slice(1).join('•').trim() : prod.desc}
+                </p>
+                <div style={{ 
+                  fontSize: '1.35rem', 
+                  fontFamily: 'var(--font-heading)', 
+                  fontWeight: 700, 
+                  color: prod.soldOut ? 'var(--text-secondary)' : '#fff' 
+                }}>
                   {prod.price}
                 </div>
               </div>
@@ -217,33 +310,36 @@ const TrendingGrid = () => {
       
       <style>{`
         .product-card {
-          padding: 10px;
-          border-radius: 8px;
+          padding: 12px;
+          border-radius: 6px;
+          background-color: rgba(20, 20, 20, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.02);
           transition: var(--transition);
         }
         .product-card:hover {
-          background-color: rgba(255, 255, 255, 0.03);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          background-color: rgba(255, 255, 255, 0.04);
+          border-color: rgba(212, 255, 0, 0.15);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.6);
           transform: translateY(-5px);
         }
         .img-container {
           border-radius: 4px;
         }
-        /* Aesthetic dark vignette overlay to hide the floor */
+        /* Aesthetic dark vignette overlay to frame the natural flat-lay look */
         .img-container::after {
           content: '';
           position: absolute;
           inset: 0;
-          box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
+          box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(0, 0, 0, 0.95);
           pointer-events: none;
           transition: var(--transition);
-          z-index: 1;
+          z-index: 2;
         }
-        .img-container:hover::after {
-          box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+        .product-card:hover .img-container::after {
+          box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.85);
         }
         .product-card:hover .product-img {
-          transform: scale(1.08);
+          transform: scale(1.06);
         }
         .product-card:hover .add-to-cart-overlay {
           bottom: 0;
@@ -251,28 +347,29 @@ const TrendingGrid = () => {
         }
         .add-to-cart-overlay {
           opacity: 0;
-          z-index: 2;
         }
 
         @media (max-width: 500px) {
           .products-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 1.2rem 0.8rem !important;
+            gap: 1.2rem 0.6rem !important;
           }
           .img-container {
-            height: 200px !important;
-            margin-bottom: 0.8rem !important;
+            height: 220px !important;
+            margin-bottom: 0.6rem !important;
           }
           .product-card {
-            padding: 5px !important;
+            padding: 8px !important;
+            background-color: rgba(15, 15, 15, 0.8) !important;
+            border-radius: 4px !important;
           }
           .product-card h3 {
-            font-size: 0.95rem !important;
+            font-size: 0.9rem !important;
             line-height: 1.2 !important;
             margin-bottom: 0.2rem !important;
           }
           .product-card p {
-            font-size: 0.75rem !important;
+            font-size: 0.7rem !important;
             line-height: 1.3 !important;
             margin-bottom: 0.4rem !important;
             display: -webkit-box;
@@ -281,18 +378,18 @@ const TrendingGrid = () => {
             overflow: hidden;
           }
           .product-card div {
-            font-size: 0.95rem !important;
+            font-size: 0.9rem !important;
           }
           .add-to-cart-overlay {
             bottom: 0 !important;
             opacity: 1 !important;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%) !important;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%) !important;
             padding: 6px !important;
           }
           .add-to-cart-overlay button {
             width: 100% !important;
             padding: 6px !important;
-            font-size: 0.75rem !important;
+            font-size: 0.7rem !important;
           }
         }
       `}</style>

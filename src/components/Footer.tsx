@@ -86,11 +86,11 @@ const Footer = () => {
           fontSize: '0.8rem'
         }}>
           <p>&copy; 2026 8STREET CLUB. TODOS LOS DERECHOS RESERVADOS.</p>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display: 'flex', gap: '15px', fontWeight: 600, fontSize: '0.75rem', letterSpacing: '1px' }}>
             <span>VISA</span>
             <span>MASTERCARD</span>
             <span>PAYPAL</span>
-            <span>CRYPTO</span>
+            <span className="text-accent">SINPE MÓVIL</span>
           </div>
         </div>
       </div>

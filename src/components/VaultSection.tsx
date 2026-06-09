@@ -57,8 +57,8 @@ const VaultSection = () => {
           </h2>
           
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '700px' }}>
-            Acceso exclusivo a prendas de colección y colaboraciones agotadas. 
-            Cada artículo de La Bóveda pasa por un riguroso proceso de verificación física para garantizar su absoluta autenticidad antes del envío.
+            Acceso exclusivo a prendas de colección y piezas retro vintage. 
+            Seleccionamos y curamos minuciosamente a mano cada artículo para ofrecerte una colección de alta calidad y piezas únicas listas para vestir.
           </p>
 
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
